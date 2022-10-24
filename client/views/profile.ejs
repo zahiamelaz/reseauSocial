@@ -1,0 +1,192 @@
+<% if(locals.me.success){ %>
+<%- include('./partials/headerf'); %>
+<div class="container-md">  
+    <div class="card mb-3" style="background:#f1f0f0 ;">
+        <div class="text-center">
+            <img name="attachement" src="/img/uploads/<%= locals.me.success.attachement %>" class="round mt-5" alt="image">
+        </div>      
+        <div class="userprofile">
+            <h4 class="titre ">Mes informations</h4>
+            <hr>
+            <h4 class="titre ">Username: <%= locals.me.success.username %></h4>
+            <h4 class="titre ">Email : <%=locals.me.success.email %></h4>
+            <p class="bio"> <strong>Profession:</strong>  <%=locals.me.success.bio %></p>         
+        </div>
+        <hr>    
+        <div class="icons">
+                <div class="icon">
+                    <form method="POST" action="/deleteuser">
+                        <button  tupe="button" id="suprimer" class=" btn btn-danger m-2 " onClick= 'return confirm("Voulez-vous vraiment supprimer cet utilisateur ?")'>Supprimer</button>
+                    </form>
+                </div>
+                <div class="icon">
+                    <form action="/profile"  onctype="multipart/form-data" method="post">
+                        <!-- Button trigger modal -->
+                        <button type="button"  id="suprimer" class="btn btn-success m-2 " data-toggle="modal" data-target="#exampleModalCenter">
+                        Modifier
+                        </button>                
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Modifier votre profile</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="text" class="form-control mb-2" name="username"  placeholder="username"  id="editusername">
+                                        <input type="text" class="form-control mb-2" name="bio"  placeholder="Ecrire ici"  id="editbio">
+                                        <input type="file" name="attachement" class="form-control" id="editattachement"><br>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" id="change">Save Changes</button>                        
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="icon">
+                    <form action="/"  onctype="multipart/form-data" method="post">
+                        <!-- Button trigger modal -->
+                        <button type="button" id="suprimer"  class="btn btn-primary m-2 " data-toggle="modal" data-target="#exampleModalCenter2">
+                        Ajouter un post
+                        </button>                
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Ajouter un post</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                <input type="text" class="form-control mb-2" name="content"  placeholder="content"  id="editcontent">
+                                <input type="file" name="attachement" class="form-control" id="editattachement"><br>
+                                </div>
+                                <button type="submit" class="btn btn-primary" id="change">Publier</button>  
+                            </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>          
+        </div>
+    </div>
+    <% if(locals.data.post) {%> 
+    <% console.log('*******iciinfo****',locals.data.post) %> 
+    <% locals.data.post.map((post)=>{ %>    
+        <% if(locals.me.success.id === post.userId){ %> 
+            <div class="card  mb-3 p-2" style="background:#f1f0f0 ;">                          
+    <!----- ----------------- infosuser ,delete,update ----------->
+                <div class="userinfo">
+                    <div class="user">
+                        <img src="/img/uploads/<%=post.users.attachement  %> " class="imgprofile" alt="image">
+                        <p class="card-title"><%=post.users.username %></p>
+                        <span class="text-muted"><%=post.createdAt%> </span>
+                    </div>
+                    <div class="usericon">
+                        <% if(locals.me.success.id === post.userId) {%>                                     
+                            <form action="/delete?idpost=<%=post.id%>" method="post">
+                                <button type="submit" id="btnmo"  class="btn btn-outline-danger" onClick= 'return confirm("Voulez-vous vraiment supprimer cet post ?")'>
+                                    <i class="fa-regular fa-trash-can color:red"></i></button>
+                            </form>                        
+                        <% } %>                               
+                    </div>    
+                </div>
+    <!------------------------infospost ------------------- -->
+                <% if(locals.me.success.id === post.userId) {%>  
+                    <form action="/update/<%=post.id%>"  onctype="multipart/form-data" method="post">
+                        <a data-toggle="collapse" href="#collapsecon"  aria-expanded="false" aria-controls="collapseExample">
+                        <p class="content" id="put" name="content"><i class="fa-solid fa-marker"></i><%=post.content%> </p></a> 
+                        <div class="collapse" id="collapsecon">
+                            <div class="modifier">
+                                <input type="text" name="content"  placeholder="new content">
+                                <button type="submit" class="btn btn-primary btn-sm" id="change">save</button>
+                            </div>
+                        </div>  
+                        <% if(post.attachement!=""){%>
+                        <a data-toggle="collapse" href="#collapseat"  aria-expanded="false" aria-controls="collapseExample">
+                        <img  name="attachement" src="/img/uploads/<%=post.attachement%>" class="img-fluid rounded-start"  style="height:320px; width:100%;" alt="image"></a> 
+                        <div class="collapse" id="collapseat">
+                            <div class="modifier">
+                                <input type="file" name="attachement"  placeholder="new attachement">
+                                <button type="submit" class="btn btn-primary btn-sm" id="change">save</button>
+                            </div>
+                        </div> 
+                        <% } %>                 
+                    </form>
+                <% } %> 
+    <!------------------ ----infoscommentaires et delete,likes------ -->                                           
+                <div class="card" style="background:#f1f0f0 ; border: none;"  >                                                                   
+                    <div class="com-and-like">                          
+                        <a href="#collapseCom" class="linkcomment" data-toggle="collapse" data-bs-target="#collapseCom"><i class="fa-solid fa-comment-dots"></i></a> 
+                        <div class="leftlike">
+                            <div class="likeicon">
+                                <form action="/postunlike/<%= post.id %>" method="post">
+                                    <button class="btndislike" type="submit"><i class="fa-solid fa-thumbs-down"></i></button>
+                                </form>
+                            </div> 
+                            <div class="likeicon">
+                                <form action="/postlike/<%= post.id %>" method="post">
+                                    <button class="btnlike" type="submit"><i class="fa-solid fa-thumbs-up"></i></button>
+                                </form>
+                            </div>       
+                            <div class="likeicon">
+                                <span>(<%= post.likesCount %>)</span>                    
+                            </div>                                        
+                        </div>                                   
+                    </div>                                                                          
+                    <form action="/comment?idpost=<%= post.id%> " method="post">
+                        <div class="addcom">
+                            <input type="text" class="form-control" name="content"  placeholder="    Ajouter un commentaire ici......">  
+                            <button type="submit" class="btn"><i class="fa-sharp fa-solid fa-paper-plane-top"></i></button>
+                        </div>
+                    </form>
+                    <div class="listcom">
+                        <% post.comments.map((com)=>{ %> 
+                        <% if(post.id === com.postId){ %> 
+                            <div class="col collapse" id="collapseCom"> 
+                                <hr>                                                                             
+                                <div class="commentaires">
+                                    <div class="comment">
+                                        <div class="usercom">
+                                            <img src="/img/uploads/<%=com.users.attachement %>" class="imgprocom" alt="image">
+                                            <p ><%= com.users.username %></p>
+                                        </div>
+                                        <div class="infocoms">
+                                                <p class="contentcom"> <%= com.content %> </p>
+                                                <small class="text-muted"><%= com.createdAt %> </small>
+                                        </div>
+                                    </div>  
+                                    <div class="del-upd">                       
+                                    <% if( locals.me.success.id === com.userId){%> 
+                                        <form action="/deletecomment?id=<%= com.id %>" method="post" id="form">
+                                            <button type="submit" id="btnmo" class="btn btn-outline-danger btn-sm"><i class="fa-regular fa-trash-can"></i></button>
+                                        </form>             
+                                        <form action="/post/<%= com.postId%>/comment/<%= com.id %>" method="post">
+                                            <a data-toggle="collapse" href="#collapsecom"  aria-expanded="false" aria-controls="collapseExample">
+                                            <i class="fa-solid fa-pen-to-square "></i></a>
+                                            <div class="collapse" id="collapsecom">
+                                                <div class="modifier">
+                                                    <input type="text"  class="form-control" name="content" placeholder="new text">
+                                                    <button type="submit" class="btn btn-primary btn-sm" id="change">save</button>
+                                                </div>
+                                            </div>
+                                        </form>                                           
+                                        <% } %>                                            
+                                    </div>                                                                                 
+                                </div>       
+                            </div>  
+                            <% } %>                                                                            
+                        <% }) %> 
+                    </div>
+                </div>                                    
+            </div>   
+            <% } %>
+        <% }) %>
+    <% } %>
+</div>
+<%- include('./partials/footer') %>
+<% } %>

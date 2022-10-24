@@ -1,0 +1,494 @@
+/*------------DESKTOP---------*/
+/* --------------register and login---------- */
+*{
+    padding: 0;
+    margin: 0;
+    font-family:sans-serif;
+}
+main{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('../img/uploads/background-technology-in-the-concept-of-data-network-vector.jpg') no-repeat;
+    background-size: cover;
+    object-fit: fill;
+    /* opacity: 0.75; */
+}
+/* .main2{
+    background-color: rgb(246, 245, 245);
+} */
+.carte{
+    width: 100%;
+    max-width:45%;
+    margin-top: 2%;
+    height: 640px;
+    background-color:transparent;
+    border-radius: 20px;
+}
+.cartes{
+    width: 100%;
+    max-width:45%;
+    margin-top: 2%;
+    height: 600px;
+    background-color:transparent;
+    border-radius: 20px;
+
+}
+.links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 5% ;
+   
+}
+.register{
+    text-decoration: none;
+    color: #ffffff;
+    padding: 8px;
+    background-color: #4fc3dc;
+    border-radius:10px 0 0 10px ;
+}
+.login{
+    text-decoration: none;
+    color: #4fc3dc;
+    padding: 7px;
+    border-radius: 0 10px 10px 0;
+    border: 1px solid #4fc3dc;
+    border-left: 3px solid #ffffff;
+}
+.login:hover{
+    background-color: #4fc3dc;
+    border-radius: 0 10px 10px 0;
+    color: white;
+}
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.typewriter{
+    color: #ffffff;
+    font-size: 30px;
+    width: 255px;
+    font-weight: bold; 
+    margin: 30px auto; 
+    border-right: 2px solid #ffffff;
+    overflow: hidden; 
+    white-space: nowrap;
+    animation: controlwidth 8s  steps(15)  infinite ;
+}
+
+@keyframes controlwidth{
+    from{
+        width: 0;
+        
+    }
+    to{
+        width: 255px;
+    }
+}
+.submit-btn{
+    width: 90%; 
+    padding:10px 20px ;
+    cursor: pointer;
+    margin-left:5% ;
+    background:#4fc3dc ;
+    color: white;
+    border-radius:10px;
+    font-size: 20px;
+    border: none;
+}
+.champ{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:25px;
+}
+.inputreg,.inputlog{
+    padding: 10px ;
+    width: 90%;  
+    color:#ffffff;
+    border-radius: 10px;
+    background: transparent;
+    font-size: 18px;
+}
+/* --------------NAVBAR--------------- */ 
+.navlist{ 
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 5px;
+    background-color: #000000;
+}
+.log{ 
+    display: flex;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border:2px solid #4fc3dc;
+    background: url('../img/uploads/logobl.png')no-repeat;
+    background-size: cover;
+}
+.list{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.list ul li  {
+    display: flex;
+    margin: 0 0 0 70px;
+    justify-content: space-around;
+    font-size: 25px;
+}
+.list ul li a {
+   color: #ffffff;
+}
+.list ul li.active a {
+    color: #4fc3dc;
+}
+.menu{
+    z-index: 10;
+}
+.menuburger i.fa-solid{
+    position: absolute;
+   color: #ffffff; 
+   display: none;
+}
+/* --------------HOME ET PROFILE---------- */
+.addpost{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+.useradpost{
+    display: flex;
+    flex-direction:column;
+    width: 20%;
+  
+}
+.inputadpost{
+    display: flex;
+    flex-direction:column;
+    width: 79%;
+}
+.imgpost{
+    width: 60px; 
+    height: 60px;
+    border-radius:50% ;
+    border: 2px solid #4fc3dc;
+}
+
+.users,.aside,.user{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.userinfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.usericon{
+    display: flex;
+    flex-direction: row;
+}
+
+.com-and-like{
+    display: flex;
+    flex-direction: row;  
+    justify-content: space-between;
+}
+.likeicon{
+    margin-right:10px;
+}
+.leftlike{
+    display: flex;
+    flex-direction:row;
+     justify-content:flex-end; 
+}
+.infocoms{
+    display: flex;
+    flex-direction:column;
+}
+
+.btnlike{
+    border: none;
+    background-color: transparent;
+    font-size: 18px;
+    color: #0000ff;
+}
+.btndislike{
+    border: none;
+    background-color: transparent;
+    padding-top: 2px;
+    font-size: 18px;
+    color:#0000ff;
+}
+#editcontent{
+    background-color: #ffffff;
+    border: none;
+}
+
+#posts i{
+    padding: 2px;
+}
+.icons{
+    display: flex;
+    flex-direction: row;
+}
+.round{
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    border: 4px solid #ffffff;
+}
+.imgprof{
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    padding: 2px;
+    border: 2px solid #4fc3dc;
+    margin-right: 15px;
+}
+.imgprofile,.imgprocom{
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    padding: 2px;
+    border: 2px solid #4fc3dc ;
+    margin-right: 15px;
+}
+.commentaires{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.del-upd{
+    display: flex;
+    flex-direction: row;
+}
+a{
+    text-decoration: none;
+}
+.content{
+    margin-left:50px;
+    color: black;
+}
+.addcom{
+    display: flex;
+    flex-direction: row;
+}
+.addcom button{
+ border:none;
+ color:none ;
+}
+.cominfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.inputcom{
+    border: none;
+    font-size: 18px;
+}
+.linkcomment i{
+    font-size: 22px;
+}
+.text-center{
+background-image: url('../img/uploads/imgm.jpeg');
+background-repeat: no-repeat;
+background-size:cover;
+}
+.userprofile{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10px;   
+}
+.contentcom{
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+.comment{
+    display: flex;
+    flex-direction:row;
+}
+.bio{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+#suprimer{
+    border-radius: 8px;
+} 
+#btnmo{
+    border:none;
+    font-size: 25px;
+}
+.nomuser{
+    top: 10px;
+}
+.avatar{
+    margin-top: 20px;
+    color: #ffffff;
+    text-decoration: none;
+}
+#put{
+    text-decoration:none ;
+}
+/*----------------tablette-------------*/
+@media screen and (min-width: 768px) and (max-width: 991px){
+    .carte,.cartes{
+        width: 100%;
+        max-width: 70%;
+        border-radius: none;
+        background-color: transparent;  
+    }
+    .imgprocom{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid #4fc3dc ;
+    }
+    .text-muted{
+        font-size: 12px;
+    } 
+}
+/*----------------mobile-------------*/
+@media screen and (max-width: 767px) {
+   
+    .typewriter{
+        color: #ffffff;
+        font-size:18px; 
+    } 
+    @keyframes controlwidth{
+        from{
+            width: 0;  
+        }
+        to{
+            width: 150px;
+        }
+    }
+    .carte,.cartes{
+        width: 100%;
+        max-width: 90%;
+        border-radius: none;
+        background-color:transparent;  
+    }  
+    .links{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 5% ; 
+    }
+    .links{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 5% ;
+       
+    }  
+    .list{
+        position:absolute ;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color:rgba(0,0,0,0.8) ;
+        width: 100%;
+        top: 0;
+        left:-100%;
+    }
+    .list.mobile-menu{
+        left:0;
+    }
+    .menuburger i.fa-solid{
+       display: block;
+       font-size: 30px;
+       top: 15px;
+       right: 30px;
+     }
+    .navlist{
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 65px;
+    background-color: rgba(15, 5, 5, 0.877)
+    }   
+    .list ul li.active a{
+        margin-top: 70px;
+    }
+    .log{
+        position: absolute;
+        left: 25px;
+        z-index: 11;
+    }
+    .imgprocom{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid #4fc3dc ;
+    }
+    .users,.aside{
+        display: flex;
+        flex-direction:row;
+        align-items: center;
+    }
+    .user{
+        display: flex;
+        flex-direction:column;
+        align-items: flex-start;
+    }
+    .usericon{
+        display: flex;
+        flex-direction: row;
+    }
+    .text-muted{
+        font-size: 12px;
+    }
+    .content{
+        margin-left:5px;
+        color: black;
+    }
+   
+    #btnmo{
+        border:none;
+        font-size: 16px;
+    }
+    #posts{
+        margin-left:0;
+    }
+    .imgpost,.imgprofile{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+    .icons{
+        display: flex;
+        flex-wrap: wrap;
+    }
+   
+    
+}
+

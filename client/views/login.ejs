@@ -1,0 +1,30 @@
+<main> 
+    <%- include('./partials/headerR'); %>
+        <div class="cartes">
+            <% if(locals.error ) { %>
+                <div style="color:red ;">
+                    <%- locals.error %>
+                </div>
+            <% } %>
+            <div class="links">
+                <a href="/login"class="register">Connexion</a>
+                <a href="/register" class="login">S'inscrire</a>
+            </div>
+            <div class="logos">
+                <p class="typewriter">AFPA LEARNING</p>   
+            </div>              
+            <form method="POST" action="/login">               
+                <div class="champ">                
+                    <input type="text" class="inputlog" name="email" id="email2" placeholder="Email">
+                    <div class="error2"></div>
+                </div>
+                <div class="champ">                
+                    <input type="password" class="inputlog" name="password" id="password2" placeholder="Votre mot de passe">
+                    <div class="error2"></div>
+                </div>
+                <button  type="submit" class="submit-btn" id="submit">Envoyer</button>
+            </form>        
+        </div>
+
+    <%- include('./partials/footer'); %>
+</main>
